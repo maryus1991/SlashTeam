@@ -8,8 +8,8 @@ class CommentsSerializer(serializers.ModelSerializer):
     create serializer for comments
     """
 
-    image = Base64ImageField()
+    image = Base64ImageField(represent_in_base64=True)
 
     class Meta:
         model = Comments
-        fields = '__all__'
+        fields = [ 'name','is_active', 'comment', 'image']

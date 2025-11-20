@@ -6,4 +6,5 @@ class ContactsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Contacts
-        fields = '__all__'
+        fields = ('name', 'last_name', 'message', 'email')
+

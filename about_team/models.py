@@ -9,4 +9,7 @@ class About(models.Model):
     class Meta:
         verbose_name='درباره'
         verbose_name_plural='درباره'
+
+    def __str__(self):
+        return str(self.id)
     

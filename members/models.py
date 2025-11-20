@@ -14,5 +14,8 @@ class Members(models.Model):
     class Meta:
         verbose_name='عضو'
         verbose_name_plural='اعضا'
+
+    def __str__(self):
+        return self.name
     
 

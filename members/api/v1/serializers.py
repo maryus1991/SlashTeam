@@ -7,8 +7,8 @@ from drf_extra_fields.fields import Base64ImageField
 class MembersSerializer(serializers.ModelSerializer):
     """create serializer for Members"""
 
-    photo = Base64ImageField()
+    photo = Base64ImageField(represent_in_base64=True)
 
     class Meta:
         model = Members
-        fields = '__all__'
+        fields = ('id', 'name', 'skills', 'website', 'telegram', 'whatsapp', 'photo')
