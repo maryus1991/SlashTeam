@@ -1,0 +1,6 @@
+env/*
+*.sql*
+*.pyc
+.git/*
+ــpycache__/*
+media/*
