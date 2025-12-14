@@ -22,7 +22,7 @@ services:
   react:
     build:
       context: ./UI         # فقط از فولدر frontend بیلد کن
-      dockerfile: Dockerfile
+      dockerfile: ./SlashFront
     command: npm start
     volumes:
       - /app/node_modules           # این خط خیلی مهمه! node_modules رو خراب نکنه
