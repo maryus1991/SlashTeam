@@ -44,7 +44,7 @@ urlpatterns = [
     path('contact/', include('contact.api.v1.urls')),
     path('members/', include('members.api.v1.urls')),
     path('service/', include('service.api.v1.urls')),
-    path('site', include('site_setting.api.v1.urls')),
+    path('site/', include('site_setting.api.v1.urls')),
 
 ]
 # if settings.DEBUG:

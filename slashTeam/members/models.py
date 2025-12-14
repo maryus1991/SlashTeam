@@ -4,11 +4,11 @@ from django.db import models
 
 class Members(models.Model):
 
-    name = models.CharField(verbose_name='نام')
-    skills = models.TextField(verbose_name='مهارت ها')
-    website = models.URLField(verbose_name='لینک سایت')
-    telegram = models.URLField(verbose_name='لینک تلگرام')
-    whatsapp = models.URLField(verbose_name='لینک واتساپ')
+    name = models.CharField(verbose_name= 'نام', max_length=100)
+    skills = models.TextField(verbose_name='مهارت ها', max_length=250)
+    website = models.URLField(verbose_name='لینک سایت', null=True, blank=True)
+    telegram = models.URLField(verbose_name='لینک تلگرام', null=True, blank=True)
+    whatsapp = models.URLField(verbose_name='لینک واتساپ', null=True, blank=True )
     photo = models.ImageField(upload_to='members/',verbose_name='عکس')
 
     class Meta:

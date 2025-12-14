@@ -5,6 +5,5 @@ ENV PYTHONNONBUFFERED=1
 
 
 WORKDIR /app
-COPY / /app/
-
-RUN pip install -r req.txt
+COPY . .
+RUN pip install -r requirements.txt

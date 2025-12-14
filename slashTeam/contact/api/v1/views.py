@@ -6,10 +6,10 @@ from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
 
 
-@method_decorator(csrf_protect, name='dispatch')
+# @method_decorator(csrf_protect, name='dispatch')
 class ContactsCreateAPIView(CreateAPIView):
 
     serializer_class = ContactsSerializer
     queryset = Contacts.objects.all()
-    authentication_classes = [SessionAuthentication]
+    # authentication_classes = [SessionAuthentication]
 

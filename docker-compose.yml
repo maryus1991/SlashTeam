@@ -3,12 +3,19 @@ version: "3.9"
 services:
   django:
     build:
-      context: ./slashTeam          # فقط از فولدر backend بیلد کن
+      context: ./slashTeam
       dockerfile: Dockerfile
-    command: python manage.py runserver 0.0.0.0:8080
-
+    command: python manage.py runserver 0.0.0.0:8000
+    environment:
+      - PYTHONDONTWRITEBYTECCODE=1
+      - PYTHONNONBUFFERED=1
+    volumes:
+      - ./slashTeam:/app
     ports:
-      - "8080:8080"
+      - "8000:8000"
+
+    expose:
+      - "8000"
 
     restart: always
 
@@ -19,8 +26,12 @@ services:
     command: npm start
     volumes:
       - /app/node_modules           # این خط خیلی مهمه! node_modules رو خراب نکنه
+      - ./UI:/app
+
     ports:
       - "3000:3000"
     environment:
       - CHOKIDAR_USEPOLLING=true    # برای hot reload داخل داکر
     restart: always
+    depends_on:
+      - django
