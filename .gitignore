@@ -3,3 +3,4 @@ env/*
 .git/*
 ــpycache__/*
 UI/
+slashFront/node_modules/*

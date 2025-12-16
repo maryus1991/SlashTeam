@@ -21,3 +21,11 @@ class SiteMetaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Site
         fields = ('keywords_meta_tag', 'description_meta_tag', 'author_meta_tag')
+
+class SiteContactInformation(serializers.ModelSerializer):
+    """
+    for return site contact information
+    """
+    class Meta:
+        model = Site
+        fields = ('Team_instagram', 'Team_telegram', 'Team_email')

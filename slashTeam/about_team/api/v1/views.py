@@ -1,14 +1,11 @@
 from about_team.models import About
-from rest_framework.generics import RetrieveAPIView
+from rest_framework.generics import ListAPIView
 from .serializers import AboutTeamSerializer
 
-class AboutListAPIView(RetrieveAPIView):
+class AboutListAPIView(ListAPIView):
     """
     api for return about team description
     """
 
     serializer_class = AboutTeamSerializer
-
-    def get_object(self):
-        queryset = About.objects.first()
-        return queryset
+    queryset = About.objects.all()

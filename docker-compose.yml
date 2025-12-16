@@ -5,28 +5,29 @@ services:
     build:
       context: ./slashTeam
       dockerfile: Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000
+    command: >
+      gunicorn config.wsgi:application
+      --bind 0.0.0.0:8000
+      --workers 3
+      --timeout 120
+
     environment:
       - PYTHONDONTWRITEBYTECCODE=1
       - PYTHONNONBUFFERED=1
     volumes:
       - ./slashTeam:/app
-    ports:
-      - "8000:8000"
-
     expose:
       - "8000"
-
     restart: always
 
   react:
     build:
-      context: ./UI         # فقط از فولدر frontend بیلد کن
-      dockerfile: ./SlashFront
-    command: npm start
+      context: ./slashFront         # فقط از فولدر frontend بیلد کن
+      dockerfile: Dockerfile
+    command: npx serve -s build
     volumes:
       - /app/node_modules           # این خط خیلی مهمه! node_modules رو خراب نکنه
-      - ./UI:/app
+      - ./slashFront:/app
 
     ports:
       - "3000:3000"
@@ -35,3 +36,14 @@ services:
     restart: always
     depends_on:
       - django
+
+  
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - django
+      - react
